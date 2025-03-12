@@ -194,14 +194,14 @@ func isUpdateUrlInJson(jsonStr []byte) bool {
 	// i will have rob pike's decapitated head on a spike for the mess that is this language
 	switch ue1 := ue1.(type) {
 	case string:
-		if strings.Contains(ue1, "shelter.6686.us.kg") {
+		if strings.Contains(ue1, "localhost:8081") {
 			return true
 		}
 	}
 
 	switch ue2 := ue2.(type) {
 	case string:
-		if strings.Contains(ue2, "shelter.6686.us.kg") {
+		if strings.Contains(ue2, "localhost:8081") {
 			return true
 		}
 	}
@@ -217,8 +217,8 @@ func setUpdateUrlInJson(jsonStr []byte, branch string) []byte {
 		panic(err)
 	}
 
-	deserialized["UPDATE_ENDPOINT"] = "https://shelter.6686.us.kg/" + branch
-	deserialized["NEW_UPDATE_ENDPOINT"] = "https://shelter.6686.us.kg/" + branch + "/"
+	deserialized["UPDATE_ENDPOINT"] = "http://localhost:8081/" + branch
+	deserialized["NEW_UPDATE_ENDPOINT"] = "http://localhost:8081/" + branch + "/"
 
 	sered, err := json.MarshalIndent(deserialized, "", "	")
 	if err != nil {
